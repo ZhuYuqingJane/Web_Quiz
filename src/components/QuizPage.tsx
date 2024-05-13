@@ -5,7 +5,7 @@ import deQuestions from '../json/QuestionsDE.json';
 
 const QuizPage: React.FC = () => {
     const [uniqueTopics, setUniqueTopics] = useState<string[]>([]);
-    const [triesLeft1, settriesLeft1] = useState(() => Number(localStorage.getItem('triesLeft1') || 3));
+    const [triesLeft1, setTriesLeft1] = useState(() => Number(localStorage.getItem('triesLeft1') || 3));
     const [triesLeft2, setTriesLeft2] = useState(() => Number(localStorage.getItem('triesLeft2') || 3));
     const [attemptedQuizzes, setAttemptedQuizzes] = useState<string[]>(() => {
         const storedAttempts = localStorage.getItem('attemptedQuizzes');
@@ -18,7 +18,7 @@ const QuizPage: React.FC = () => {
     const player = state?.player || 1;
     const playerID = state?.playerID || 1;
     const quizScore = state?.quizScore || 0;
-    const [finalScore1, setfinalScore1] = useState(() => Number(localStorage.getItem('finalScore1') || 0));
+    const [finalScore1, setFinalScore1] = useState(() => Number(localStorage.getItem('finalScore1') || 0));
     const [finalScore2, setFinalScore2] = useState(() => Number(localStorage.getItem('finalScore2') || 0));
 
     useEffect(() => {
@@ -31,7 +31,7 @@ const QuizPage: React.FC = () => {
         if (quizScore) {
             if (playerID === 1) {
                 newScore1 += quizScore;
-                setfinalScore1(newScore1);
+                setFinalScore1(newScore1);
                 localStorage.setItem('finalScore1', newScore1.toString());
             } else if (playerID === 2) {
                 newScore2 += quizScore;
@@ -56,10 +56,10 @@ const QuizPage: React.FC = () => {
                 } else if (newScore2 !== finalScore1) {
                     localStorage.setItem('finalScore2', newScore2.toString());
                 }
-                navigate('/end', { state: { finalScore1: newScore1, finalScore2: newScore2, language, player} });
+                navigate('/end', { state: { finalScore1: newScore1, finalScore2: newScore2, language, player } });
             }
         }
-    }, [language, quizScore, triesLeft1, navigate]);
+    }, [language, quizScore, triesLeft1, triesLeft2, navigate]);
 
 
     useEffect(() => {
@@ -79,36 +79,32 @@ const QuizPage: React.FC = () => {
         const keyPressListener = (event: KeyboardEvent) => {
             if (event.key === 'a' && cursorPosition !== null) { // Ensure cursorPosition is not null
                 const [topic, score] = cursorPosition.split('-');
-                handleNavigateToQuiz(topic, parseInt(score),1);
-            } else if (event.key === 'b' && player === 2 && cursorPosition !== null){
+                handleNavigateToQuiz(topic, parseInt(score), 1);
+            } else if (event.key === 'b' && player === 2 && cursorPosition !== null) {
                 const [topic, score] = cursorPosition.split('-');
-                handleNavigateToQuiz(topic, parseInt(score),2);
+                handleNavigateToQuiz(topic, parseInt(score), 2);
             }
         };
         window.addEventListener('keypress', keyPressListener);
         return () => window.removeEventListener('keypress', keyPressListener);
-    }, [cursorPosition]);
+    }, [cursorPosition, player]);
 
     function handleNavigateToQuiz(topic: string, score: number, playerID: number) {
         const attemptKey = `${topic}-${score}`;
-        if (playerID ===1) {
-            if (triesLeft1 > 0 && !attemptedQuizzes.includes(attemptKey)) {
-                navigate('/quiz-show', { state: { topic, score, language, playerID, player } });
-                settriesLeft1(triesLeft1 - 1);
-                localStorage.setItem('triesLeft1', (triesLeft1 - 1).toString());
-                const updatedAttempts = [...attemptedQuizzes, attemptKey];
-                setAttemptedQuizzes(updatedAttempts);
-                localStorage.setItem('attemptedQuizzes', JSON.stringify(updatedAttempts));
-            }
-        } else if (playerID ===2 ) {
-            if (triesLeft2 > 0 && !attemptedQuizzes.includes(attemptKey)) {
-                navigate('/quiz-show', { state: { topic, score, language, playerID, player } });
-                settriesLeft1(triesLeft2 - 1);
-                localStorage.setItem('triesLeft2', (triesLeft2 - 1).toString());
-                const updatedAttempts = [...attemptedQuizzes, attemptKey];
-                setAttemptedQuizzes(updatedAttempts);
-                localStorage.setItem('attemptedQuizzes', JSON.stringify(updatedAttempts));
-            }
+        if (playerID === 1 && triesLeft1 > 0 && !attemptedQuizzes.includes(attemptKey)) {
+            navigate('/quiz-show', { state: { topic, score, language, playerID, player } });
+            setTriesLeft1(triesLeft1 - 1);
+            localStorage.setItem('triesLeft1', (triesLeft1 - 1).toString());
+            const updatedAttempts = [...attemptedQuizzes, attemptKey];
+            setAttemptedQuizzes(updatedAttempts);
+            localStorage.setItem('attemptedQuizzes', JSON.stringify(updatedAttempts));
+        } else if (playerID === 2 && triesLeft2 > 0 && !attemptedQuizzes.includes(attemptKey)) {
+            navigate('/quiz-show', { state: { topic, score, language, playerID, player } });
+            setTriesLeft2(triesLeft2 - 1);
+            localStorage.setItem('triesLeft2', (triesLeft2 - 1).toString());
+            const updatedAttempts = [...attemptedQuizzes, attemptKey];
+            setAttemptedQuizzes(updatedAttempts);
+            localStorage.setItem('attemptedQuizzes', JSON.stringify(updatedAttempts));
         }
     }
 
@@ -120,8 +116,8 @@ const QuizPage: React.FC = () => {
     }
 
     const resetScore = () => {
-        setfinalScore1(0);
-        settriesLeft1(3);
+        setFinalScore1(0);
+        setTriesLeft1(3);
         setFinalScore2(0);
         setTriesLeft2(3);
         setAttemptedQuizzes([]);
@@ -133,24 +129,15 @@ const QuizPage: React.FC = () => {
     };
 
     return (
-        <div style={{padding: '0 200px', marginTop: '50px'}}>
-            <div style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                textAlign: 'left',
-                marginBottom: '20px',
-                border: '1px solid #ccc',
-                backgroundColor: 'lightblue',
-                padding: '10px',
-                fontSize: '30px'
-            }}>
-                <div> {/* Player 1 */}
+        <div className="px-20 pt-10">
+            <div className="flex justify-between mb-10 border-2 border-gray-300 pb-4 text-2xl bg-sky-100 pt-4 px-6">
+                <div>
                     <h3>{language === 'de' ? `Spieler 1 Daten:` : `Player 1 Data:`}</h3>
                     <div>{language === 'de' ? `Punktzahl: ${finalScore1}` : `Score: ${finalScore1}`}</div>
                     <div>{language === 'de' ? `Verbleibende Versuche: ${triesLeft1}` : `Tries left: ${triesLeft1}`}</div>
                 </div>
                 {player === 2 && (
-                    <div> {/* Player 2 */}
+                    <div>
                         <h3>{language === 'de' ? `Spieler 2 Daten:` : `Player 2 Data:`}</h3>
                         <div>{language === 'de' ? `Punktzahl: ${finalScore2}` : `Score: ${finalScore2}`}</div>
                         <div>{language === 'de' ? `Verbleibende Versuche: ${triesLeft2}` : `Tries left: ${triesLeft2}`}</div>
@@ -158,75 +145,41 @@ const QuizPage: React.FC = () => {
                 )}
             </div>
 
-            <div style={{
-                display: 'flex',
-                flexWrap: 'wrap', // Allows the items to wrap onto multiple lines
-                justifyContent: 'space-around', // Maintains space distribution
-                alignItems: 'flex-start', // Aligns items to the start of the flex container
-                marginBottom: '20px',
-                border: '1px solid #ccc'
-            }}>
+            <div className="flex flex-wrap justify-around mb-10 border-2 border-gray-300">
                 {uniqueTopics.map(topic => (
-                    <div key={topic} style={{
-                        width: '30%', // Adjust width to less than half to fit two items per row
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        margin: '10px 0',
-                        padding: '10px' // Optional: adds some spacing inside each topic container
-                    }}>
-                        <div style={{
-                            fontWeight: 'bold',
-                            fontSize: '32px',
-                            marginBottom: '10px',
-                            whiteSpace: 'nowrap'
-                        }}>
-                            {topic}
+                    <div key={topic} className="w-full md:w-1/3 p-4 rounded-md">
+                        <div className="font-bold text-3xl mb-2 text-center">{topic}</div>
+                        <div className="flex flex-col items-center space-y-4a">
+                            {['100', '200'].map(score => {
+                                const key = `${topic}-${score}`;
+                                const isCursor = cursorPosition === key;
+                                const attempted = attemptedQuizzes.includes(key);
+                                return (
+                                    <button
+                                        key={key}
+                                        className={`w-1/4 py-2 mb-4 ${buttonStyle} ${attempted ? 'bg-cyan-700' : (isCursor ? 'bg-blue-200' : 'bg-white')}`}
+                                        onClick={() => handleNavigateToQuiz(topic, parseInt(score), playerID)}
+                                    >
+                                        {score}
+                                    </button>
+                                );
+                            })}
                         </div>
-                        {['100', '200'].map(score => {
-                            const key = `${topic}-${score}`;
-                            const isCursor = cursorPosition === key;
-                            const attempted = attemptedQuizzes.includes(key);
-                            return (
-                                <button
-                                    key={key}
-                                    style={{
-                                        ...buttonStyle,
-                                        backgroundColor: attempted ? '#009FCC' : (isCursor ? '#add8e6' : 'white'),
-                                        marginBottom: '5px' // Adds spacing between buttons
-                                    }}
-                                >
-                                    {score}
-                                </button>
-                            );
-                        })}
                     </div>
                 ))}
             </div>
 
 
-            <div style={{
-                display: 'flex',
-                width: '100%',
-                justifyContent: 'space-between',
-                padding: '0 20px'
-            }}>
-                <button onClick={() => navigate('/')} style={buttonStyle}>
+            <div className="flex justify-between">
+                <button onClick={() => navigate('/')} className={buttonStyle}>
                     {language === 'de' ? 'Zurück zum Menü' : 'Back to Menu'}
                 </button>
-                <button onClick={resetScore} style={buttonStyle}>{language === 'de' ? 'Zurücksetzen' : 'Reset'}</button>
+                <button onClick={resetScore}
+                        className={buttonStyle}>{language === 'de' ? 'Zurücksetzen' : 'Reset'}</button>
             </div>
         </div>
     );
 };
 
-const buttonStyle: React.CSSProperties = {
-    margin: '4px',
-    padding: '10px 15px',
-    border: '1px solid #ccc',
-    borderRadius: '8px',
-    cursor: 'pointer',
-    fontSize: '40px'
-};
-
+const buttonStyle = "mr-4 py-3 px-5 border-2 border-gray-300 rounded-lg text-3xl";
 export default QuizPage;

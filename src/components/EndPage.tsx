@@ -38,41 +38,38 @@ const EndPage: React.FC = () => {
         let winnerMessage = '';
         if (player === 2) {
             if (finalScore1 > finalScore2) {
-            winnerMessage = language === 'de' ? 'Spieler 1 gewinnt!' : 'Player 1 wins!';
-        } else if (finalScore1 < finalScore2) {
-            winnerMessage = language === 'de' ? 'Spieler 2 gewinnt!' : 'Player 2 wins!';
-        } else {
-            winnerMessage = language === 'de' ? 'Unentschieden!' : 'It\'s a draw!';
-        }}
-        return <p style={{fontSize: '40px', textAlign: 'center', marginTop:'20px'}}>{winnerMessage}</p>;
+                winnerMessage = language === 'de' ? 'Spieler 1 gewinnt!' : 'Player 1 wins!';
+            } else if (finalScore1 < finalScore2) {
+                winnerMessage = language === 'de' ? 'Spieler 2 gewinnt!' : 'Player 2 wins!';
+            } else {
+                winnerMessage = language === 'de' ? 'Unentschieden!' : 'It\'s a draw!';
+            }
+        }
+        return <p className="text-4xl text-center mt-10">{winnerMessage}</p>;
     };
 
     return (
-        <div>
-            <h1 style={{fontWeight: 'bold', textAlign: 'center', color: '#009FCC', marginTop: '150px', fontSize: '60px'}}>
-            {language === 'de' ? `Quiz fertig!` : `Quiz completed!`}</h1>
-            <p style={{fontSize: '40px', textAlign: 'center', marginTop:'20px'}}>{language === 'de' ? `Spieler 1 hat insgesamt ${finalScore1} Punkte.` : `Player 1 totally scored ${finalScore1} points.`}</p>
+        <div className="text-center mt-32">
+            <h1 className="font-bold text-cyan-600 text-5xl mt-150">
+                {language === 'de' ? `Quiz fertig!` : `Quiz completed!`}
+            </h1>
+            <p className="text-4xl text-center mt-20">
+                {language === 'de' ? `Spieler 1 hat insgesamt ${finalScore1} Punkte.` : `Player 1 totally scored ${finalScore1} points.`}
+            </p>
             {player === 2 && (
                 <div>
-                    <p style={{fontSize: '40px', textAlign: 'center'}}>{language === 'de' ? `Spieler 2 hat insgesamt ${finalScore2} Punkte.` : `Player 2 totally scored ${finalScore2} points.`}</p>
+                    <p className="text-4xl text-center">
+                        {language === 'de' ? `Spieler 2 hat insgesamt ${finalScore2} Punkte.` : `Player 2 totally scored ${finalScore2} points.`}
+                    </p>
                 </div>
             )}
             <GameStatus />
-            <button onClick={() => navigate('/')} style={buttonStyle}>
+            <button onClick={() => navigate('/')} className="inline-block px-8 py-2 border-2 border-gray-300 rounded-lg mt-8 text-2xl">
                 {language === 'de' ? `Zurück zum Menü` : `Back to Menu`}
             </button>
         </div>
     );
-};
 
-// Define inline styles
-const buttonStyle: React.CSSProperties = {
-    marginRight: '4px',
-    padding: '8px',
-    border: '2px solid #ccc',
-    borderRadius: '8px',
-    marginLeft: '300px',
-    fontSize:'40px'
 };
 
 export default EndPage;

@@ -33,41 +33,34 @@ const FeedbackPage: React.FC = () => {
 
 
     return (
-        <div>
-            <h1 style={{fontWeight: 'bold', textAlign: 'center', color: '#009FCC', marginTop: '150px', fontSize: '60px'}}>
-                {language === 'de' ? 'Quiz Ergebnisse' : 'Quiz Results'}</h1>
-            <p style={{fontSize: '40px', marginLeft: '300px'}}>
-                {language === 'de' ? `Spieler${playerID} hast ${quizScore} Punkte.` : `Player${playerID} scored ${quizScore} points.`}</p>
+        <div className="text-center mt-32">
+            <h1 className="font-bold text-cyan-600 text-5xl mb-6">
+                {language === 'de' ? 'Quiz Ergebnisse' : 'Quiz Results'}
+            </h1>
+            <p className="text-4xl">
+                {language === 'de' ? `Spieler${playerID} hast ${quizScore} Punkte.` : `Player${playerID} scored ${quizScore} points.`}
+            </p>
             {!wasCorrect && (
-                <p style={{fontSize: '40px', marginLeft: '300px', marginTop:'20px', marginRight:'300px'}}>
-                    {language === 'de' ?
+                <p className="text-3xl ml-32 mt-4 mr-32">
+                    {language === 'de' ? (
                         <>
                             Falsche Antwort: Du hast '<strong>{selectedAnswer}</strong>' ausgewählt.<br />
                             Die richtige Antwort war '<strong>{correctAnswer}</strong>'.
-                        </> :
+                        </>
+                    ) : (
                         <>
                             Incorrect: You selected '<strong>{selectedAnswer}</strong>'.<br />
                             The correct answer was '<strong>{correctAnswer}</strong>'.
                         </>
-                    }
+                    )}
                 </p>
             )}
-            <button onClick={() => navigate('/quiz', { state: { language, quizScore } })} style={buttonStyle}>
+            <button onClick={() => navigate('/quiz', { state: { language, quizScore } })} className="inline-block px-8 py-2 border-2 border-gray-300 rounded-lg mt-8 text-2xl">
                 {language === 'de' ? 'Zurück zum Auswahl' : 'Back to Selection'}
             </button>
         </div>
     );
 };
-// Define inline styles
-const buttonStyle: React.CSSProperties = {
-    marginRight: '4px',
-    padding: '8px',
-    border: '2px solid #ccc',
-    borderRadius: '8px',
-    marginLeft: '300px',
-    marginTop:'30px',
-    fontSize:'40px'
 
-};
 
 export default FeedbackPage;

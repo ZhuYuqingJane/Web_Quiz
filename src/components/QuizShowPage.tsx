@@ -66,24 +66,21 @@ const QuizShowPage: React.FC = () => {
         });
     };
 
-    const buttonColors = ['blue', 'red', '#DAA520', 'black'];
-
     return (
         <div>
             {question && (
                 <div>
-                    <h3 style={{fontWeight: 'bold', textAlign: 'center', color: '#009FCC', marginTop: '150px', fontSize: '60px'}}>
-                        {language === 'en' ? `Player ${playerID} is doing the question` : `Spieler ${playerID} stellt die Frage`}</h3>
-                    <p style={{textAlign: 'center', color: 'black', marginTop: '20px', fontSize: '40px', marginLeft: '200px', marginRight: '200px'}}>{question.question}</p>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '20px' , fontSize: '20px'}}>
+                    <h3 className="font-bold text-5xl text-center text-cyan-600 mt-32 mb-8">
+                        {language === 'en' ? `Player ${playerID} is doing the question` : `Spieler ${playerID} stellt die Frage`}
+                    </h3>
+                    <p className="text-center text-black text-4xl mx-8">{question.question}</p>
+                    <div className="flex flex-wrap justify-center mt-8 space-x-4">
                         {shuffledAnswers.map((answer, index) => (
-                            <button key={index}
-                                    style={{
-                                        ...buttonStyle,
-                                        backgroundColor: buttonColors[index % buttonColors.length],
-                                        color: 'white' // Assuming white text color for better contrast
-                                    }}
-                                    onClick={() => handleAnswerSelect(answer)}>
+                            <button
+                                key={index}
+                                className={`text-white text-2xl px-2 py-4 rounded w-72 text-center whitespace-normal  ${index === 0 ? 'bg-blue-500' : index === 1 ? 'bg-red-500' : index === 2 ? 'bg-yellow-500' : 'bg-black'}`}
+                                onClick={() => handleAnswerSelect(answer)}
+                            >
                                 {answer}
                             </button>
                         ))}
@@ -92,23 +89,9 @@ const QuizShowPage: React.FC = () => {
             )}
         </div>
     );
+
+
 };
 
-// Define inline styles
-const buttonStyle: React.CSSProperties = {
-    marginRight: '4px',
-    padding: '8px 10px',
-    border: '2px solid #ccc',
-    borderRadius: '8px',
-    cursor: 'pointer',
-    flexWrap: 'wrap',
-    display: 'flex',
-    width: '400px',
-    height: 'auto',
-    fontSize: '30px',
-    alignItems: 'center', // Align items vertically in the center
-    justifyContent: 'center', // Align items horizontally in the center
-    whiteSpace: 'normal'
-};
 
 export default QuizShowPage;

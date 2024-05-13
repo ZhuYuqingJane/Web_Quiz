@@ -35,73 +35,24 @@ const HomePage: React.FC = () => {
     }); // Include language in the dependency array to ensure up-to-date state
 
 
-    const buttonStyle: React.CSSProperties = {
-        marginRight: '4px',
-        padding: '12px 20px',
-        border: '2px solid #ccc',
-        borderRadius: '8px',
-        fontSize: '40px'
-    };
-
-    const language_buttonStyle: React.CSSProperties = {
-        marginRight: '4px',
-        padding: '8px 15px',
-        border: '2px solid #ccc',
-        borderRadius: '8px',
-        fontSize: '20px'
-    };
-
-
-    const selectedButtonStyle: React.CSSProperties = {
-        ...buttonStyle,
-        backgroundColor: 'lightblue',
-    };
-
-    const selected_language_ButtonStyle: React.CSSProperties = {
-        ...language_buttonStyle,
-        backgroundColor: 'lightblue',
-    };
-
-    const containerStyle: React.CSSProperties = {
-        position: 'fixed',
-        left: '50px',
-        bottom: '50px',
-        padding: '10px'
-    };
+    const buttonStyle = "mr-4 py-3 px-5 border-2 border-gray-300 rounded-lg text-3xl";
+    const selectedButtonStyle = "mr-4 py-3 px-5 border-2 border-gray-300 rounded-lg text-3xl bg-blue-200";
+    const containerStyle = "fixed left-10 bottom-10 p-2";
 
     return (
-        <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            marginTop: '20px',
-            alignItems: 'center',
-            height: '100vh'  // This makes the div take the full height of the viewport
-        }}>
-            <img src="Logo/CISPA_CysecLab_Logo_4c.svg" width="600" alt=''/>
-            <h1 style={{
-                fontSize: '60px', // Increase the font size
-                color: '#009FCC',
-                fontWeight: 'bold'
-            }}>{language === 'de' ? 'Willkommen zum Quiz!' : 'Welcome to the quiz!'}</h1>
-            <div style={{marginTop: '10px'}}>
-                <button onClick={() => setPlayer(1)}
-                        style={player === 1 ? selectedButtonStyle : buttonStyle}>{language === 'de' ? '1 Spieler' : '1 Player'}
-                </button>
-                <button onClick={() => setPlayer(2)}
-                        style={player === 2 ? selectedButtonStyle : buttonStyle}>{language === 'de' ? '2 Spieler' : '2 Players'}
-                </button>
+        <div className="flex flex-col justify-center items-center h-screen">
+            <img src="Logo/CISPA_CysecLab_Logo_4c.svg" width="600" alt='' />
+            <h1 className="text-6xl font-bold text-cyan-600">{language === 'de' ? 'Willkommen zum Quiz!' : 'Welcome to the quiz!'}</h1>
+            <div className="mt-4">
+                <button onClick={() => setPlayer(1)} className={player === 1 ? selectedButtonStyle : buttonStyle}>{language === 'de' ? '1 Spieler' : '1 Player'}</button>
+                <button onClick={() => setPlayer(2)} className={player === 2 ? selectedButtonStyle : buttonStyle}>{language === 'de' ? '2 Spieler' : '2 Players'}</button>
             </div>
-            <div style={{marginTop: '10px'}}>
-                <button onClick={startQuiz}
-                        style={buttonStyle}>{language === 'de' ? 'Quiz Beginnen' : 'Start Quiz'}</button>
+            <div className="mt-4">
+                <button onClick={startQuiz} className={buttonStyle}>{language === 'de' ? 'Quiz Beginnen' : 'Start Quiz'}</button>
             </div>
-            <div style={containerStyle}>
-                <button onClick={() => setLanguage('en')}
-                        style={language === 'en' ? selected_language_ButtonStyle : language_buttonStyle}>EN
-                </button>
-                <button onClick={() => setLanguage('de')}
-                        style={language === 'de' ? selected_language_ButtonStyle : language_buttonStyle}>DE
-                </button>
+            <div className={containerStyle}>
+                <button onClick={() => setLanguage('en')} className={language === 'en' ? selectedButtonStyle : buttonStyle}>EN</button>
+                <button onClick={() => setLanguage('de')} className={language === 'de' ? selectedButtonStyle : buttonStyle}>DE</button>
             </div>
         </div>
     );
