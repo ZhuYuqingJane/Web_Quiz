@@ -1,0 +1,252 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which hash function is used in computers?",
+      "answers": ["SHA-256", "ASCII", "Base64", "AES"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "Sensor Data"
+    },
+    {
+      "id": 2,
+      "question": "When is a replay attack possible?",
+      "answers": ["When the key is reused", "When the recipient does not receive the message", "When multiple transmission errors occur", "When no error correction is used"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "Sensor Data"
+    },
+    {
+      "id": 3,
+      "question": "Which technology is used to wirelessly exchange data between devices?",
+      "answers": ["Bluetooth", "USB", "HDMI", "Ethernet"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "Sensor Data"
+    },
+    {
+      "id": 4,
+      "question": "Which codes are used to detect errors in data transmission?",
+      "answers": ["Check digits", "Binary code", "Morse code", "QR Code"],
+      "correctAnswer": 0,
+      "score": 100,
+      "topic": "Sensor Data"
+    },
+    {
+      "id": 5,
+      "question": "Which gas is primarily responsible for the greenhouse effect?",
+      "answers": ["CO2", "Oxygen", "Nitrogen", "Hydrogen"],
+      "correctAnswer": 0,
+      "score": 100,
+      "topic": "Sensor Data"
+    },
+    {
+      "id": 6,
+      "question": "Which routing protocol is commonly used in large computer networks like the Internet?",
+      "answers": ["BGP (Border Gateway Protocol)", "DNS (Domain Name System)", "HTTP (Hypertext Transfer Protocol)", "ARP (Address Resolution Protocol)"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "Graphen & Route Hijacking"
+    },
+    {
+      "id": 7,
+      "question": "What do the edges in a graph represent?",
+      "answers": ["Roads", "Cars on the road", "The traffic situation", "Buildings"],
+      "correctAnswer": 0,
+      "score": 100,
+      "topic": "Graphen & Route Hijacking"
+    },
+    {
+      "id": 8,
+      "question": "What type of algorithm is used to find the shortest path between two points in a graph?",
+      "answers": ["Dijkstra's Algorithm", "Breadth-First Search", "Depth-First Search", "Euclidean Algorithm"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "Graphen & Route Hijacking"
+    },
+    {
+      "id": 9,
+      "question": "What does the weighting of an edge model?",
+      "answers": ["The traffic density or estimated travel time along the edges", "The length of the edges", "The number of edges", "The direction of the edges"],
+      "correctAnswer": 0,
+      "score": 100,
+      "topic": "Graphen & Route Hijacking"
+    },
+    {
+      "id": 10,
+      "question": "What does an attacker attempt to manipulate in a BGP hijacking attack?",
+      "answers": ["The routing information", "The security of emails", "The position of satellites", "The speed of internet connections"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "Graphen & Route Hijacking"
+    },
+    {
+      "id" : 11,
+      "question": "Imagine you want to plan a trip with your friends and family that should cover the most of the sight-seeing landmarks, which problem does this scenario relate to?",
+      "answers": ["Traveling Salesman Problem", "Calliope Weather Station", "Gravitational problem", "I don't know"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "TSP Game"
+    },
+    {
+      "id" : 12,
+      "question": "In the TSP game, what happens when the number of cities is doubled? How would the number of possible route combinations likely change?",
+      "answers": ["Increase significantly (exponentially)", "Double (proportionally)", "Constant", "Slight Decrease"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "TSP Game"
+    },
+    {
+      "id" : 13,
+      "question": "What do you mean by \"heuristics\" as a way to guide route optimization?",
+      "answers": ["A rule of thumb or educated guess", "A specific algorithm", "Number of cities", "Mathematical formula"],
+      "correctAnswer": 0,
+      "score": 100,
+      "topic": "TSP Game"
+    },
+    {
+      "id" : 14,
+      "question": "The TSP game emphasizes finding the most efficient routes. What life skill can be improved by adapting this optmization?",
+      "answers": ["All of them", "Time management", "Fuel management", "Planning and problem solving"],
+      "correctAnswer": 0,
+      "score": 100,
+      "topic": "TSP Game"
+    },
+    {
+      "id" : 15,
+      "question": "Imagine you want to visit a friend halfway through your ongoing trip. Which algorithm would you most likely apply to meet your friend?",
+      "answers": ["Nearest Neighbor", "None of the above", "Dynamic Programming", "Brute Force Search"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "TSP Game"
+    },
+    {
+      "id": 16,
+      "question": "What type of component is a microcontroller?",
+      "answers": ["Passive component", "Active component", "Electromechanical component", "Semiconductor component"],
+      "correctAnswer": 1,
+      "score": 100,
+      "topic": "Microcontroller"
+    },
+    {
+      "id": 17,
+      "question": "Which factor most strongly influences the power consumption of a microcontroller?",
+      "answers": ["Operating voltage", "Clock frequency", "Size of internal memory", "Number of I/O pins"],
+      "correctAnswer": 1,
+      "score": 200,
+      "topic": "Microcontroller"
+    },
+    {
+      "id": 18,
+      "question": "What is the purpose of a power-saving mode in a microcontroller?",
+      "answers": ["Maximization of performance", "Minimization of power consumption", "Increase in response speed", "Improvement of connectivity"],
+      "correctAnswer": 1,
+      "score": 100,
+      "topic": "Microcontroller"
+    },
+    {
+      "id": 19,
+      "question": "Which of the following methods does not necessarily help to reduce the power consumption of a microcontroller?",
+      "answers": ["Use of low-power sleep modes", "Reduction of operating voltage", "Increase of clock frequency", "Deactivation of unnecessary peripherals"],
+      "correctAnswer": 2,
+      "score": 200,
+      "topic": "Microcontroller"
+    },
+    {
+      "id": 20,
+      "question": "What is the main disadvantage of power-saving modes in microcontrollers?",
+      "answers": ["Increased operating costs", "Reduced performance", "Increased environmental impact", "Decreased security"],
+      "correctAnswer": 1,
+      "score": 100,
+      "topic": "Microcontroller"
+    },
+    {
+      "id": 21,
+      "question": "Which technology is used to convert solar energy into electrical energy?",
+      "answers": ["Solar panels", "Generators", "Steam turbines", "Nuclear reactors"],
+      "correctAnswer": 0,
+      "score": 100,
+      "topic": "Electricity"
+    },
+    {
+      "id": 22,
+      "question": "What is the purpose of 'Dynamic Voltage and Frequency Scaling' (DVFS) in a computer system?",
+      "answers": ["Minimization of processor performance", "Adjustment of the processor's operating voltage and frequency according to current requirements", "Maximization of screen resolution", "Minimization of RAM usage"],
+      "correctAnswer": 1,
+      "score": 200,
+      "topic": "Electricity"
+    },
+    {
+      "id": 23,
+      "question": "Which effect describes the ability of a material to convert light into electrical energy?",
+      "answers": ["Photovoltaic effect", "Hall effect", "Piezoelectric effect", "Thermoelectric effect"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "Electricity"
+    },
+    {
+      "id": 24,
+      "question": "Which metal conducts electricity best?",
+      "answers": ["Silver", "Copper", "Iron", "Aluminum"],
+      "correctAnswer": 0,
+      "score": 100,
+      "topic": "Electricity"
+    },
+    {
+      "id": 25,
+      "question": "With which unit is the power of a device designated?",
+      "answers": ["Volt", "Watt", "Kilowatt hour", "Ohm"],
+      "correctAnswer": 1,
+      "score": 100,
+      "topic": "Electricity"
+    },
+    {
+      "id": 26,
+      "question": "Which component of a computer executes the instructions of a program?",
+      "answers": ["CPU", "PSU", "Ethernet Controller", "Mainboard"],
+      "correctAnswer": 0,
+      "score": 100,
+      "topic": "Compiler"
+    },
+    {
+      "id": 27,
+      "question": "What term is used for programming languages that are directly translated for an instruction set using a compiler?",
+      "answers": ["compiled", "transpired", "interpreted", "synthesized"],
+      "correctAnswer": 0,
+      "score": 100,
+      "topic": "Compiler"
+    },
+    {
+      "id": 28,
+      "question": "Who handles the execution of interpreted programming languages?",
+      "answers": ["Virtual machines", "Physical machines", "Random Access Memory (RAM)", "Interpreted languages are not executed"],
+      "correctAnswer": 0,
+      "score": 100,
+      "topic": "Compiler"
+    },
+    {
+      "id": 29,
+      "question": "How much memory does an instruction occupy in a 64-bit system?",
+      "answers": ["8 bytes", "2 bytes", "4 bytes", "1 byte"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "Compiler"
+    },
+    {
+      "id": 30,
+      "question": "Why is a compiled language more energy-efficient than an interpreted language?",
+      "answers": ["The executable code does not need further translation and runs directly on the CPU", "It manages memory better", "Execution becomes more efficient through AI", "The produced bytecode is platform-independent and thus more efficient"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "Compiler"
+    },
+    {
+      "id": 31,
+      "question": "What is the binary representation of the instruction \"ret\" (hexadecimal: c3)?",
+      "answers": ["11000011", "10010110", "11110000", "00000001"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "Compiler"
+    }
+  ]
+}

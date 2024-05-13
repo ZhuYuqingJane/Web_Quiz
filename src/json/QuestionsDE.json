@@ -1,0 +1,254 @@
+{
+  "questions": [
+    {
+      "id" : 1,
+      "question": "Welche Hash-Funktion wird in Computern benutzt?",
+      "answers": ["SHA-256", "ASCII", "Base64", "AES"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "Sensor Data"
+    },
+    {
+      "id" : 2,
+      "question": "Wann ist ein Replay-Angriff möglich?",
+      "answers": ["Wenn der Schlüssel wiederverwendet wird", "Wenn der Empfänger die Nachricht nicht empfängt", "Wenn mehrere Übertragungsfehler auftreten", "Wenn keine Fehlerkorrektur verwendet wird"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "Sensor Data"
+    },
+    {
+      "id" : 3,
+      "question": "Welche Technologie wird verwendet, um drahtlos Daten zwischen Geräten auszutauschen?",
+      "answers": ["Bluetooth", "USB", "HDMI", "Ethernet"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "Sensor Data"
+    },
+    {
+      "id" : 4,
+      "question": "Welche Codes werden verwendet, um Fehler in der Datenübertragung zu erkennen?",
+      "answers": ["Prüfziffern", "Binärcode", "Morsezeichen", "QR-Code"],
+      "correctAnswer": 0,
+      "score": 100,
+      "topic": "Sensor Data"
+    },
+    {
+      "id" : 5,
+      "question": "Welches Gas ist hauptsächlich für den Treibhauseffekt verantwortlich?",
+      "answers": ["CO2", "Sauerstoff", "Stickstoff", "Wasserstoff"],
+      "correctAnswer": 0,
+      "score": 100,
+      "topic": "Sensor Data"
+    },
+
+
+    {
+      "id" : 6,
+      "question": "Welches Routing-Protokoll wird häufig in großen Computernetzwerken wie dem Internet verwendet?",
+      "answers": ["BGP (Border Gateway Protocol)", "DNS (Domain Name System)", "HTTP (Hypertext Transfer Protocol)", "ARP (Address Resolution Protocol)"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "Graphen & Route Hijacking"
+    },
+    {
+      "id" : 7,
+      "question": "Was stellen die Kanten in einem Graphen dar?",
+      "answers": ["Straßen", "Autos auf der Straße", "Die Verkehrssituation", "Gebäude"],
+      "correctAnswer": 0,
+      "score": 100,
+      "topic": "Graphen & Route Hijacking"
+    },
+    {
+      "id" : 8,
+      "question": "Welche Art von Algorithmus wird verwendet, um den kürzesten Weg zwischen zwei Punkten in einem Graphen zu finden?",
+      "answers": ["Dijkstra-Algorithmus", "Breadth-First Search (Breitensuche)", "Depth-First Search (Tiefensuche)", "Euklidischer Algorithmus"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "Graphen & Route Hijacking"
+    },
+    {
+      "id" : 9,
+      "question": "Was modelliert die Gewichtung einer Kante?",
+      "answers": ["Die Verkehrsdichte oder geschätzte Fahrzeit entlang der Kanten", "Die Länge der Kanten", "Die Anzahl der Kanten", "Die Richtung der Kanten"],
+      "correctAnswer": 0,
+      "score": 100,
+      "topic": "Graphen & Route Hijacking"
+    },
+    {
+      "id" : 10,
+      "question": "Was versucht ein Angreifer in einem BGP Hijacking Angriff zu manipulieren?",
+      "answers": ["Die Routing-Informationen", "Die Sicherheit von E-Mails", "Die Position von Satelliten", "Die Geschwindigkeit von Internetverbindungen"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "Graphen & Route Hijacking"
+    },
+    {
+      "id": 11,
+      "question": "Stellen Sie sich vor, Sie möchten eine Reise mit Ihren Freunden und Ihrer Familie planen, die die meisten Sehenswürdigkeiten abdecken soll. Welches Problem betrifft dieses Szenario?",
+      "answers": ["Problem des Handlungsreisenden", "Calliope-Wetterstation", "Gravitationsproblem", "Ich weiß es nicht"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "TSP Game"
+    },
+    {
+      "id": 12,
+      "question": "Was passiert im TSP-Spiel, wenn sich die Anzahl der Städte verdoppelt? Wie würde sich die Anzahl der möglichen Routenkombinationen wahrscheinlich ändern?",
+      "answers": ["Erhöht sich signifikant (exponentiell)", "Verdoppelt sich (proportional)", "Bleibt gleich", "Verringert sich leicht"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "TSP Game"
+    },
+    {
+      "id": 13,
+      "question": "Was meinen Sie mit \"Heuristiken\" als Wegweiser zur Routenoptimierung?",
+      "answers": ["Faustregel oder gebildete Vermutung", "Ein spezifischer Algorithmus", "Anzahl der Städte", "Mathematische Formel"],
+      "correctAnswer": 0,
+      "score": 100,
+      "topic": "TSP Game"
+    },
+    {
+      "id": 14,
+      "question": "Das TSP-Spiel betont das Finden der effizientesten Routen. Welche Lebensfähigkeit kann durch diese Optimierung verbessert werden?",
+      "answers": ["Alle davon", "Zeitmanagement", "Kraftstoffmanagement", "Planung und Problemlösung"],
+      "correctAnswer": 0,
+      "score": 100,
+      "topic": "TSP Game"
+    },
+    {
+      "id": 15,
+      "question": "Stellen Sie sich vor, Sie möchten einen Freund auf halber Strecke Ihrer laufenden Reise besuchen. Welchen Algorithmus würden Sie am ehesten anwenden, um Ihren Freund zu treffen?",
+      "answers": ["Nächster Nachbar", "Keiner von oben", "Dynamische Programmierung", "Brute-Force-Suche"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "TSP Game"
+    },
+    {
+      "id": 16,
+      "question": "Welche Art von Bauteil ist ein Mikrocontroller?",
+      "answers": ["Passives Bauteil", "Aktives Bauteil", "Elektromechanisches Bauteil", "Halbleiterbauteil"],
+      "correctAnswer": 1,
+      "score": 100,
+      "topic": "Microcontroller"
+    },
+    {
+      "id": 17,
+      "question": "Welcher Faktor beeinflusst den Stromverbrauch eines Mikrocontrollers am stärksten?",
+      "answers": ["Betriebsspannung", "Taktfrequenz", "Größe des internen Speichers", "Anzahl der I/O-Pins"],
+      "correctAnswer": 1,
+      "score": 200,
+      "topic": "Microcontroller"
+    },
+    {
+      "id": 18,
+      "question": "Was ist der Zweck eines Energiesparmodus in einem Mikrocontroller?",
+      "answers": ["Maximierung der Leistung", "Minimierung des Stromverbrauchs", "Erhöhung der Reaktionsgeschwindigkeit", "Verbesserung der Konnektivität"],
+      "correctAnswer": 1,
+      "score": 100,
+      "topic": "Microcontroller"
+    },
+    {
+      "id": 19,
+      "question": "Welche der folgenden Methoden hilft nicht notwendigerweise dabei, den Stromverbrauch eines Mikrocontrollers zu reduzieren?",
+      "answers": ["Einsatz von Low-Power-Schlafmodi", "Reduzierung der Betriebsspannung", "Erhöhung der Taktfrequenz", "Deaktivierung nicht benötigter Peripheriegeräte"],
+      "correctAnswer": 2,
+      "score": 200,
+      "topic": "Microcontroller"
+    },
+    {
+      "id": 20,
+      "question": "Was ist der Hauptnachteil von stromsparenden Modi in Mikrocontrollern?",
+      "answers": ["Erhöhte Betriebskosten", "Reduzierte Leistungsfähigkeit", "Erhöhte Umweltbelastung", "Verminderte Sicherheit"],
+      "correctAnswer": 1,
+      "score": 100,
+      "topic": "Microcontroller"
+    },
+    {
+      "id": 21,
+      "question": "Welche Technologie wird verwendet, um elektrische Energie aus Sonnenenergie umzuwandeln?",
+      "answers": ["Solarmodule", "Generatoren", "Dampfturbinen", "Kernreaktoren"],
+      "correctAnswer": 0,
+      "score": 100,
+      "topic": "Electricity"
+    },
+    {
+      "id": 22,
+      "question": "Was ist der Zweck von \"Dynamic Voltage and Frequency Scaling\" (DVFS) in einem Computersystem?",
+      "answers": ["Minimierung der Leistungsfähigkeit des Prozessors", "Anpassung der Betriebsspannung und Taktfrequenz des Prozessors an die aktuellen Anforderungen", "Maximierung der Bildschirmauflösung", "Minimierung der RAM-Auslastung"],
+      "correctAnswer": 1,
+      "score": 200,
+      "topic": "Electricity"
+    },
+    {
+      "id": 23,
+      "question": "Welcher Effekt beschreibt die Fähigkeit eines Materials, Licht in elektrische Energie umzuwandeln?",
+      "answers": ["Photovoltaischer Effekt", "Hall-Effekt", "Piezoelektrischer Effekt", "Thermoelektrischer Effekt"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "Electricity"
+    },
+    {
+      "id": 24,
+      "question": "Welches Metall leitet den elektrischen Strom am besten?",
+      "answers": ["Silber", "Kupfer", "Eisen", "Aluminium"],
+      "correctAnswer": 0,
+      "score": 100,
+      "topic": "Electricity"
+    },
+    {
+      "id": 25,
+      "question": "Mit welcher Einheit bezeichnet man die Leistung eines Gerätes?",
+      "answers": ["Volt", "Watt", "Kilowattstunde", "Ohm"],
+      "correctAnswer": 1,
+      "score": 100,
+      "topic": "Electricity"
+    },
+    {
+      "id": 26,
+      "question": "Welche Komponente eines Computers führt die Anweisungen eines Programms aus?",
+      "answers": ["CPU", "PSU", "Ethernet Controller", "Mainboard"],
+      "correctAnswer": 0,
+      "score": 100,
+      "topic": "Compiler"
+    },
+    {
+      "id": 27,
+      "question": "Wie bezeichnet man Programmiersprachen, die mit Hilfe eines Compilers direkt für ein Instruktion Set übersetzt werden?",
+      "answers": ["kompiliert", "transpiriert", "interpretiert", "synthetisiert"],
+      "correctAnswer": 0,
+      "score": 100,
+      "topic": "Compiler"
+    },
+    {
+      "id": 28,
+      "question": "Wer übernimmt die Ausführung von interpretierten Programmiersprachen?",
+      "answers": ["Virtuelle Maschinen", "Physische Maschinen", "Random Access Memory (RAM)", "Interpretierte Sprachen werden nicht ausgeführt"],
+      "correctAnswer": 0,
+      "score": 100,
+      "topic": "Compiler"
+    },
+    {
+      "id": 29,
+      "question": "Wie viel Speicher beansprucht eine Instruktion in einem 64 Bit System?",
+      "answers": ["8 Byte", "2 Bytes", "4 Bytes", "1 Bytes"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "Compiler"
+    },
+    {
+      "id": 30,
+      "question": "Wieso ist eine kompilierte Sprache energieeffizienter als eine interpretierte Sprache?",
+      "answers": ["Der ausführbare Code muss nicht weiter übersetzt werden und läuft direkt auf der CPU", "Sie geht besser mit Speicher um", "Durch KI wird die Ausführung effizienter", "Der produzierte Bytecode ist plattformunabhängig und somit effizienter"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "Compiler"
+    },
+    {
+      "id": 31,
+      "question": "Welche Darstellung hat die Instruktion \"ret\" (Hexadezimal: c3) in binärer Schreibweise?",
+      "answers": ["11000011", "10010110", "11110000", "00000001"],
+      "correctAnswer": 0,
+      "score": 200,
+      "topic": "Compiler"
+    }
+  ]
+}
