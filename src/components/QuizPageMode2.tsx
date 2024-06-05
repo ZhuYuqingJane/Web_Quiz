@@ -4,24 +4,26 @@ import enQuestions from '../json/QuestionsEN.json';
 import deQuestions from '../json/QuestionsDE.json';
 import {Topic} from "./types/Topic";
 
-const QuizPage: React.FC = () => {
+const QuizPageMode2: React.FC = () => {
     const [uniqueTopics, setUniqueTopics] = useState<string[]>([]);
-    const [triesLeft1, setTriesLeft1] = useState(() => Number(localStorage.getItem('triesLeft1') || 3));
-    const [triesLeft2, setTriesLeft2] = useState(() => Number(localStorage.getItem('triesLeft2') || 3));
     const [attemptedQuizzes, setAttemptedQuizzes] = useState<string[]>(() => {
         const storedAttempts = localStorage.getItem('attemptedQuizzes');
         return storedAttempts ? JSON.parse(storedAttempts) as string[] : [];
     });
-    const [cursorPosition, setCursorPosition] = useState<string | null>(null);
     const navigate = useNavigate();
     const {state} = useLocation();
-    const language = state?.language || 'en';
-    const player = state?.player || 1;
-    const playerID = state?.playerID || 1;
-    const quizScore = state?.quizScore || 0;
-    const mode = 1;
+    const language = state?.language;
+    const player = state?.player;
+    const playerID = state?.playerID;
+    const quizScore = state?.quizScore;
+    const mode = 2;
+    const whoEarnPoints = state?.whoEarnPoints;
+    const triesLeft1 = state?.triesLeft1;
+    const triesLeft2 = state?.triesLeft2;
     const [finalScore1, setFinalScore1] = useState(() => Number(localStorage.getItem('finalScore1') || 0));
     const [finalScore2, setFinalScore2] = useState(() => Number(localStorage.getItem('finalScore2') || 0));
+    const buttonStyle = "mr-4 py-3 px-5 rounded-lg text-3xl bg-white text-cispa_dark_blue font-bold";
+    const buttonStyle_q = "mr-4 py-3 px-20 rounded-lg text-3xl  text-cispa_dark_blue";
 
     useEffect(() => {
         const questions = language === 'en' ? enQuestions.questions : deQuestions.questions;
@@ -31,11 +33,11 @@ const QuizPage: React.FC = () => {
         let newScore1 = finalScore1;
         let newScore2 = finalScore2;
         if (quizScore) {
-            if (playerID === 1) {
+            if (whoEarnPoints === 1) {
                 newScore1 += quizScore;
                 setFinalScore1(newScore1);
                 localStorage.setItem('finalScore1', newScore1.toString());
-            } else if (playerID === 2) {
+            } else if (whoEarnPoints === 2) {
                 newScore2 += quizScore;
                 setFinalScore2(newScore2);
                 localStorage.setItem('finalScore2', newScore2.toString());
@@ -61,76 +63,51 @@ const QuizPage: React.FC = () => {
                 navigate('/end', {state: {finalScore1: newScore1, finalScore2: newScore2, language, player}});
             }
         }
-    }, [language, player, playerID, quizScore, triesLeft1, triesLeft2, navigate]);
+    }, [language, player, whoEarnPoints, quizScore, triesLeft1, triesLeft2, navigate]);
 
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            const unattemptedKeys = getUnattemptedKeys();
-            if (unattemptedKeys.length > 0) {
-                const randomKey = unattemptedKeys[Math.floor(Math.random() * unattemptedKeys.length)];
-                setCursorPosition(randomKey);
-            } else {
-                setCursorPosition(null);
-            }
-        }, 80); // Every 0.08 seconds
-        return () => clearInterval(interval);
-    });
-
-    useEffect(() => {
-        const keyPressListener = (event: KeyboardEvent) => {
-            if (event.key === 'a' && cursorPosition !== null) { // Ensure cursorPosition is not null
-                const [topic, score] = cursorPosition.split('-');
-                handleNavigateToQuiz(topic, parseInt(score), 1);
-            } else if (event.key === 'b' && player === 2 && cursorPosition !== null) {
-                const [topic, score] = cursorPosition.split('-');
-                handleNavigateToQuiz(topic, parseInt(score), 2);
-            }
-        };
-        window.addEventListener('keypress', keyPressListener);
-        return () => window.removeEventListener('keypress', keyPressListener);
-    });
 
     function handleNavigateToQuiz(topic: string, score: number, playerID: number) {
         const attemptKey = `${topic}-${score}`;
-        if (playerID === 1 && triesLeft1 > 0 && !attemptedQuizzes.includes(attemptKey)) {
-            navigate('/quiz-show', {state: {topic, score, language, playerID, player, mode}});
-            setTriesLeft1(triesLeft1 - 1);
+        if (playerID === 1 && triesLeft1 >= 0 && !attemptedQuizzes.includes(attemptKey)) {
             localStorage.setItem('triesLeft1', (triesLeft1 - 1).toString());
             const updatedAttempts = [...attemptedQuizzes, attemptKey];
             setAttemptedQuizzes(updatedAttempts);
             localStorage.setItem('attemptedQuizzes', JSON.stringify(updatedAttempts));
-        } else if (playerID === 2 && triesLeft2 > 0 && !attemptedQuizzes.includes(attemptKey)) {
-            navigate('/quiz-show', {state: {topic, score, language, playerID, player, mode}});
-            setTriesLeft2(triesLeft2 - 1);
+            navigate('/quiz-show', {
+                state: {
+                    topic,
+                    score,
+                    language,
+                    playerID,
+                    player,
+                    mode,
+                    triesLeft1,
+                    triesLeft2,
+                    finalScore1,
+                    finalScore2
+                }
+            });
+        } else if (playerID === 2 && triesLeft2 >= 0 && !attemptedQuizzes.includes(attemptKey)) {
             localStorage.setItem('triesLeft2', (triesLeft2 - 1).toString());
             const updatedAttempts = [...attemptedQuizzes, attemptKey];
             setAttemptedQuizzes(updatedAttempts);
             localStorage.setItem('attemptedQuizzes', JSON.stringify(updatedAttempts));
+            navigate('/quiz-show', {
+                state: {
+                    topic,
+                    score,
+                    language,
+                    playerID,
+                    player,
+                    mode,
+                    triesLeft1,
+                    triesLeft2,
+                    finalScore1,
+                    finalScore2
+                }
+            });
         }
     }
-
-    function getUnattemptedKeys() {
-        return uniqueTopics.flatMap(topic =>
-            ['100', '200', '300', '400'].map(score => `${topic}-${score}`)
-                .filter(key => !attemptedQuizzes.includes(key))
-        );
-    }
-
-    const resetScore = () => {
-        state.quizScore = 0;
-        setFinalScore1(0);
-        setTriesLeft1(3);
-        setFinalScore2(0);
-        setTriesLeft2(3);
-        setAttemptedQuizzes([]);
-        localStorage.setItem('finalScore1', '0');
-        localStorage.setItem('triesLeft1', '3');
-        localStorage.setItem('finalScore2', '0');
-        localStorage.setItem('triesLeft2', '3');
-        localStorage.setItem('attemptedQuizzes', JSON.stringify([]));
-    };
-
 
     function getTopicImagePath(topicName: string, language: string): string | undefined {
         const topics: Topic[] = [
@@ -169,8 +146,8 @@ const QuizPage: React.FC = () => {
                         <div>{language === 'de' ? `Punkte: ${finalScore1}` : `Score: ${finalScore1}`}</div>
                         <div>{language === 'de' ? `Verbleibende Versuche: ${triesLeft1}` : `Tries Left: ${triesLeft1}`}</div>
                     </div>
-                    <div className='font-bold text-4xl text-center text-cispa_blue_80 md:w-3/4 mt-10'>{language === 'en' ? `Press the buzzer to pause the selection.`
-                        : `Drücke den Buzzer, um die Auswahl anzuhalten.`}
+                    <div className='font-bold text-4xl text-center text-cispa_blue_80 md:w-3/4 mt-10'>{language === 'en' ? `Click on a score.`
+                                    : `Klicke auf eine Punktzahl.`}
                     </div>
                 </div>
             )}
@@ -181,20 +158,31 @@ const QuizPage: React.FC = () => {
                         <div>{language === 'de' ? `Punkte: ${finalScore1}` : `Score: ${finalScore1}`}</div>
                         <div>{language === 'de' ? `Verbleibende Versuche: ${triesLeft1}` : `Tries Left: ${triesLeft1}`}</div>
                     </div>
-                    <>
-                        <div>
-                            <div className='font-bold text-4xl text-center text-cispa_blue_80 mt-10'>{language === 'en' ? `Press the buzzer to pause the selection.`
-                                : `Drücke den Buzzer, um die Auswahl anzuhalten.`}
+                        <>
+                            <div>
+                                <h3 className="font-bold text-4xl text-center mb-2 mt-4">
+                            <span className={playerID === 1 ? 'text-cispa_yellow' : 'text-cispa_orange'}>
+                                {language === 'en' ? 'PLAYER' : 'SPIELER'} {playerID}
+                            </span>
+                                    {' '}
+                                    <span className="text-cispa_blue_80">
+                                {language === 'en' ? `may choose the question!`
+                                    : `darf die Frage bestimmen!`}
+                            </span>
+                                </h3>
+                                <div
+                                    className='font-bold text-4xl text-center text-cispa_blue_80'>{language === 'en' ? `Click on a score.`
+                                    : `Klicke auf eine Punktzahl.`}</div>
                             </div>
-                        </div>
-                        <div className="bg-cispa_orange rounded-lg py-3 px-16 font-bold text-cispa_dark_blue">
-                            <h3>{language === 'de' ? `SPIELER 2` : `PLAYER 2`}</h3>
-                            <div>{language === 'de' ? `Punkte: ${finalScore2}` : `Score: ${finalScore2}`}</div>
-                            <div>{language === 'de' ? `Verbleibende Versuche: ${triesLeft2}` : `Tries Left: ${triesLeft2}`}</div>
-                        </div>
-                    </>
+                            <div className="bg-cispa_orange rounded-lg py-3 px-16 font-bold text-cispa_dark_blue">
+                                <h3>{language === 'de' ? `SPIELER 2` : `PLAYER 2`}</h3>
+                                <div>{language === 'de' ? `Punkte: ${finalScore2}` : `Score: ${finalScore2}`}</div>
+                                <div>{language === 'de' ? `Verbleibende Versuche: ${triesLeft2}` : `Tries Left: ${triesLeft2}`}</div>
+                            </div>
+                        </>
                 </div>
             )}
+
 
             <div className="flex flex-wrap justify-around mb-10 rounded-lg bg-white py-10">
                 {uniqueTopics.map(topic => {
@@ -209,12 +197,11 @@ const QuizPage: React.FC = () => {
                             <div className="flex flex-col items-center space-y-4 font-bold">
                                 {['100', '200', '300', '400'].map(score => {
                                     const key = `${topic}-${score}`;
-                                    const isCursor = cursorPosition === key;
                                     const attempted = attemptedQuizzes.includes(key);
                                     return (
                                         <button
                                             key={key}
-                                            className={`py-2 ${buttonStyle_q} ${attempted ? 'bg-cispa_blue_20 text-white' : (isCursor ? 'bg-cispa_green  text-cispa_dark_blue' : 'bg-cispa_blue_80')}`}
+                                            className={`py-2 ${buttonStyle_q} ${attempted ? 'bg-cispa_blue_20 text-white' : 'bg-cispa_blue_80'}`}
                                             onClick={() => handleNavigateToQuiz(topic, parseInt(score), playerID)}
                                         >
                                             {score}
@@ -231,13 +218,9 @@ const QuizPage: React.FC = () => {
                 <button onClick={() => navigate('/mode', {state: {language}})} className={buttonStyle}>
                     {language === 'de' ? 'Zurück zum Menü' : 'Back to Menu'}
                 </button>
-                <button onClick={resetScore}
-                        className={buttonStyle}>{language === 'de' ? 'Zurücksetzen' : 'Reset'}</button>
             </div>
         </div>
     );
 };
 
-const buttonStyle = "mr-4 py-3 px-5 rounded-lg text-3xl bg-white text-cispa_dark_blue font-bold";
-const buttonStyle_q = "mr-4 py-3 px-20 rounded-lg text-3xl  text-cispa_dark_blue";
-export default QuizPage;
+export default QuizPageMode2;
