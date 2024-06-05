@@ -1,4 +1,4 @@
-# Getting Started with Fun-Fact-Quiz
+# Getting Started with Web-Quiz
 There are two modes of the game. You can also choose the number of players.\
 You can change the language on the first page.
 
